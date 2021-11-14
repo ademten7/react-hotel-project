@@ -6,7 +6,15 @@ const Container = (props) => {
   const [rooms, setRooms] = useState([]);
   const [sortedRooms, setSortedRooms] = useState([]);
   const [featuredRooms, setFeaturedRooms] = useState([]);
-
+  const [type, setType] = useState("all");
+  const [capacity, setCapacity] = useState(1);
+  const [price, setPrice] = useState(0);
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(0);
+  const [minSize, setMinSize] = useState(0);
+  const [maxSize, setMaxSize] = useState(0);
+  const [breakfast, setBreakfast] = useState(false);
+  const [pets, setPets] = useState(false);
   useEffect(() => {
     let rooms = formatData(datas);
     //console.log(rooms);
@@ -15,6 +23,12 @@ const Container = (props) => {
     setRooms(rooms);
     setSortedRooms(rooms);
     setFeaturedRooms(newFeaturedRooms);
+
+    let maxPrice = Math.max(...rooms.map((room) => room.price));
+    setPrice(maxPrice);
+    setMaxPrice(maxPrice);
+    let maxSize = Math.max(...rooms.map((room) => room.size));
+    setMaxSize(maxSize);
   }, []);
   //to create a more organize array with 13 object(to put  id and images inside the fields object in data files)
   //the data files is too complex.
@@ -51,6 +65,15 @@ const Container = (props) => {
         featuredRooms,
         setFeaturedRooms,
         getRoom,
+        type,
+        capacity,
+        price,
+        minPrice,
+        maxPrice,
+        minSize,
+        maxSize,
+        breakfast,
+        pets,
       }}
     >
       {props.children}
