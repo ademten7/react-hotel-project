@@ -30,7 +30,7 @@ const services = [
 ];
 
 const Services = () => {
-  const [service, setService] = useState(services);
+  const [service] = useState(services);
 
   return (
     <section className="services">

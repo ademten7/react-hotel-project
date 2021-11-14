@@ -34,7 +34,13 @@ const Container = (props) => {
     return tempItems; //this is my new array.
   };
 
-  //console.log(datas);
+  //to get Single Room
+  const getRoom = (slug) => {
+    const room = rooms.find((room) => room.slug === slug); //it finds the first match room
+    return room;
+  };
+
+  console.log(rooms);
   return (
     <MyContext.Provider
       value={{
@@ -44,6 +50,7 @@ const Container = (props) => {
         setSortedRooms,
         featuredRooms,
         setFeaturedRooms,
+        getRoom,
       }}
     >
       {props.children}
