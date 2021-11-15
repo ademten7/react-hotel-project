@@ -1,102 +1,131 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { MyContext } from "../../Context/context";
 import Title from "../Title";
+
 const RoomsFilter = ({ rooms }) => {
+  const formRef = useRef();
   const {
     type,
     setType,
+    setCapacity,
     capacity,
     price,
+    setPrice,
     minPrice,
     maxPrice,
     minSize,
     maxSize,
     breakfast,
     pets,
+    sortedRooms,
     setSortedRooms,
   } = useContext(MyContext);
 
-  const handleChange = (e) => {
-    const tempType = e.target.value;
-    // setType(tempType);
+  console.log(sortedRooms);
+
+  let tempRooms = [...rooms];
+  const getDataFromForm = (e) => {
+    e.preventDefault();
+    setType(formRef.current.type.value);
+    setCapacity(formRef.current.capacity.value);
+    setPrice(formRef.current.price.value);
+
+    if (type !== "all") {
+      tempRooms = rooms.filter(
+        (room) => room.type === formRef.current.type.value
+      );
+    }
+    if (capacity !== 1) {
+      tempRooms = tempRooms.filter(
+        (room) => room.capacity >= formRef.current.capacity.value
+      );
+    }
+    if (price !== maxPrice) {
+      tempRooms = tempRooms.filter(
+        (room) => room.price <= formRef.current.price.value
+      );
+    }
+    tempRooms = tempRooms.filter(
+      (room) =>
+        room.size >= formRef.current.minSize.value &&
+        room.size <= formRef.current.maxSize.value
+    );
+
+    // if (formRef.current.breakfast.checked) {
+    //   tempRooms = rooms.filter((room) => room.breakfast === true);
+    // }
+    // if (formRef.current.pets.checked) {
+    //   tempRooms = rooms.filter((room) => room.pets === true);
+    // }
+
+    setSortedRooms(tempRooms);
+    console.log(sortedRooms);
   };
 
   //for select options
   //to get unique types==>because there is 13 rooms but there are only four different types
-  const getUniqueTypes = (rooms) => {
-    let types = [type];
-    rooms.map((room) => {
-      if (!types.includes(room.type)) {
-        types = [...types, room.type];
-      }
-    });
-    return types;
-  };
-  let uniqueTypes = getUniqueTypes(rooms);
+  // const getUniqueTypes = (rooms) => {
+  //   let types = [type];
+  //   rooms.map((room) => {
+  //     if (!types.includes(room.type)) {
+  //       types.push(room.type);
+  //     }
+  //     console.log(types);
+  //   });
+  //   return types;
+  // };
+  // let uniqueTypes = getUniqueTypes(rooms);
+  // console.log(uniqueTypes);
 
-  //to get capacites
-  const getCapacities = (rooms) => {
-    let capacities = [capacity];
-    rooms.map((room) => {
-      if (!capacities.includes(room.capacity)) {
-        capacities = [...capacities, room.capacity];
-      }
-    });
-    return capacities;
-  };
-  let uniqueCapacities = getCapacities(rooms);
+  //to get unique capacites
+  // const getCapacities = (rooms) => {
+  //   let capacities = [capacity];
+  //   rooms.map((room) => {
+  //     if (!capacities.includes(room.capacity)) {
+  //       capacities = [...capacities, room.capacity];
+  //     }
+  //   });
+  //   return capacities;
+  // };
+  // let uniqueCapacities = getCapacities(rooms);
 
   //filter Rooms
-  let tempRooms = [...rooms];
-  const filteredRooms = () => {
-    if (type !== "all") {
-      tempRooms = rooms.filter((room) => room.type === type);
-    }
-    return tempRooms;
-  };
-
-  const tempItems = filteredRooms();
 
   return (
     <section className="filter-container">
       <Title title="search rooms" />
-      <form className="filter-form">
+      <form ref={formRef} onSubmit={getDataFromForm} className="filter-form">
         {/* select the type */}
         <div className="form-group">
           <label htmlFor="type">room type</label>
-          <select
-            name="type"
-            id="type"
-            // value={type}
-            className="form-control"
-            onChange={handleChange}
-          >
-            {uniqueTypes.map((type, index) => {
+          <select name="type" id="type" className="form-control">
+            <option value="all" selected>
+              all
+            </option>
+            <option value="single">single</option>
+            <option value="double">double</option>
+            <option value="family">family</option>
+            <option value="presidential">presidential</option>
+            {/* {uniqueTypes.map((type, index) => {
               return (
                 <option key={index} value={type}>
                   {type}
                 </option>
               );
-            })}
+            })} */}
           </select>
         </div>
         {/* select guest */}
         <div className="form-group">
           <label htmlFor="capacity">Guests</label>
-          <select
-            name="capacity"
-            id="type"
-            // value={type}
-            className="form-control"
-            onChange={handleChange}
-          >
-            {uniqueCapacities.map((type, index) => {
-              return (
-                <option key={index} value={type}>
-                  {type}
-                </option>
-              );
-            })}
+          <select name="capacity" id="capacity" className="form-control">
+            <option selected value="1" selected>
+              1
+            </option>
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+            <option value="10">10</option>
           </select>
         </div>
         {/* room price */}
@@ -109,7 +138,6 @@ const RoomsFilter = ({ rooms }) => {
             min={minPrice}
             max={maxPrice}
             // value={price}
-            onChange={handleChange}
             className="form-control"
           />
         </div>
@@ -121,16 +149,14 @@ const RoomsFilter = ({ rooms }) => {
               type="number"
               name="minSize"
               id="size"
-              value={minSize}
-              onChange={handleChange}
+              // value={minSize}
               className="size-input"
             />
             <input
               type="number"
               name="maxSize"
               id="size"
-              value={maxSize}
-              onChange={handleChange}
+              // value={maxSize}
               className="size-input"
             />
           </div>
@@ -138,18 +164,18 @@ const RoomsFilter = ({ rooms }) => {
         {/* check box for extras */}
         <div className="form-group">
           <div className="single-extra">
-            <input
-              type="checkbox"
-              name="breakfast"
-              id="breakfast"
-              checked={breakfast}
-            />
+            <input type="checkbox" name="breakfast" id="breakfast" />
             <label htmlFor="breakfast">breakfast</label>
           </div>
           <div className="single-extra">
-            <input type="checkbox" name="pets" id="pets" checked={pets} />
+            <input type="checkbox" name="pets" id="pets" />
             <label htmlFor="pets">pets</label>
           </div>
+        </div>
+        <div>
+          <button className="submit-button" type="submit">
+            Submit
+          </button>
         </div>
       </form>
     </section>

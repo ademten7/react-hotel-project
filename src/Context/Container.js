@@ -9,8 +9,8 @@ const Container = (props) => {
   const [type, setType] = useState("all");
   const [capacity, setCapacity] = useState(1);
   const [price, setPrice] = useState(0);
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(0);
+  const [minPrice, setMinPrice] = useState(100);
+  const [maxPrice, setMaxPrice] = useState(600);
   const [minSize, setMinSize] = useState(0);
   const [maxSize, setMaxSize] = useState(0);
   const [breakfast, setBreakfast] = useState(false);
@@ -66,8 +66,11 @@ const Container = (props) => {
         setFeaturedRooms,
         getRoom,
         type,
+        setType,
         capacity,
+        setCapacity,
         price,
+        setPrice,
         minPrice,
         maxPrice,
         minSize,
