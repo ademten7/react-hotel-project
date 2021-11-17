@@ -28,7 +28,7 @@ const SingleRoom = () => {
       {singleRoom && (
         <Hero hero="roomsHero">
           <Banner title={`${name} room`}>
-            <Link to="/rooms" className="btn-primary">
+            <Link to="/rooms" className="btn-prima">
               back to room
             </Link>
           </Banner>
@@ -37,7 +37,7 @@ const SingleRoom = () => {
       <section className="single-room">
         <div className="single-room-images">
           {images.map((image, index) => {
-            return <img key={index} src={image} />;
+            return <img className="single-image" key={index} src={image} />;
           })}
         </div>
 

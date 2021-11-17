@@ -3,6 +3,7 @@ import { MyContext } from "./context";
 import datas from "../data";
 
 const Container = (props) => {
+  const [user, setUser] = useState(null);
   const [rooms, setRooms] = useState([]);
   const [sortedRooms, setSortedRooms] = useState([]);
   const [featuredRooms, setFeaturedRooms] = useState([]);
@@ -58,6 +59,8 @@ const Container = (props) => {
   return (
     <MyContext.Provider
       value={{
+        user,
+        setUser,
         rooms,
         setRooms,
         sortedRooms,

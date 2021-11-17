@@ -11,7 +11,7 @@ const Rooms = ({ room }) => {
           <h6>${price}</h6>
           <p>pro night</p>
         </div>
-        <Link className="btn-primary room-link" to={`/rooms/${slug}`}>
+        <Link className="btn-prima room-link" to={`/rooms/${slug}`}>
           Features
         </Link>
       </div>

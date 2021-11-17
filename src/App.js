@@ -6,6 +6,9 @@ import Rooms from "./pages/Rooms";
 import SingleRoom from "./pages/SingleRoom";
 import Error from "./pages/Error";
 import Navbar from "./components/Navbar";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Login from "./pages/Login";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -15,7 +18,9 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/rooms/" element={<Rooms />} />
         <Route exact path="/rooms/:slug" element={<SingleRoom />} />
-        <Route exact path="*" element={<Error />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </>
   );

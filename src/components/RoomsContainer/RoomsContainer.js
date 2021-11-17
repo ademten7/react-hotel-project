@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { MyContext } from "../../Context/context";
+import NoRooms from "./NoRooms";
 import RoomsFilter from "./RoomsFilter";
 import RoomsList from "./RoomsList";
 
@@ -11,7 +12,11 @@ const RoomsContainer = () => {
   return (
     <div>
       <RoomsFilter rooms={rooms} />
-      <RoomsList rooms={sortedRooms} />
+      {sortedRooms.length > 1 ? (
+        <RoomsList rooms={sortedRooms} />
+      ) : (
+        <NoRooms sorry="Sorry there is no room  according to your chooses!!! Please check again" />
+      )}
     </div>
   );
 };

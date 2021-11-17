@@ -63,7 +63,7 @@ h6 {
     margin-bottom: 1.5em;
 }
 
-.btn-primary {
+.btn-prima {
     display: inline-block;
     text-decoration: none;
     letter-spacing: var(--mainSpacing);
@@ -76,7 +76,7 @@ h6 {
     cursor: pointer;
 }
 
-.btn-primary:hover {
+.btn-prima:hover {
     background: transparent;
     color: var(--primaryColor);
 }
@@ -117,9 +117,16 @@ h6 {
     z-index: 1;
 }
 
+.navbar-center {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 0;
+}
+
 .nav-header {
     display: flex;
     justify-content: space-between;
+    width: 400px;
 }
 
 .nav-btn {
@@ -135,6 +142,8 @@ h6 {
 }
 
 .nav-links {
+    display: grid;
+    place-items: center;
     height: 0;
     overflow: hidden;
     transition: var(--mainTransition);
@@ -162,7 +171,91 @@ h6 {
 }
 
 .show-nav {
-    height: 100px;
+    height: 250px;
+}
+
+.myActiveClass {
+    color: var(--primaryColor);
+}
+
+//login
+// .login {
+//     margin-right: 10px;
+// }
+.login-page {
+    display: grid;
+    place-items: center;
+    background-color: var(--primaryColor);
+    padding: 3em;
+    width: 70%;
+    margin: 0 auto;
+    h1 {
+        color: white;
+    }
+}
+
+//Profile
+.profile {
+    display: grid;
+    place-items: center;
+    margin-top: 2em;
+    button {
+        margin-top: 2em;
+    }
+}
+
+.profile-header {
+    color: snow;
+    display: grid;
+    place-items: center;
+    background-color: var(--primaryColor);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 2em;
+    box-shadow: 12px 12px 16px 0 rgba(255, 255, 255, 0.3), -8px -8px 12px 0 rgba(0, 0, 0, 0.25);
+}
+
+.profile-info {
+    color: snow;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--primaryColor);
+    box-shadow: 12px 12px 16px 0 rgba(255, 255, 255, 0.3), -8px -8px 12px 0 rgba(0, 0, 0, 0.25);
+}
+
+.profile-image {
+    border-radius: 50%;
+}
+
+//Contact
+.contact-all {
+    display: grid;
+    place-items: center;
+}
+
+.contact-page {
+    display: grid;
+    place-items: center;
+    width: 90%;
+    margin-top: 5em;
+    background-color: var(--primaryColor);
+    padding: 2px 20px;
+    border-radius: 20px;
+    color: whitesmoke;
+    box-shadow: 12px 12px 16px 0 rgba(255, 255, 255, 0.3) inset, -8px -8px 12px 0 rgba(0, 0, 0, 0.25) inset;
+    input,
+    textarea {
+        border: none;
+        border-radius: 8px;
+    }
+    .btn-contact {
+        padding: 5px;
+        border: none;
+        margin-bottom: 20px;
+        border-radius: 8px;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -468,6 +561,10 @@ h6 {
     display: block;
 }
 
+.single-image:hover {
+    transform: scale(2.5);
+}
+
 .single-room-info {
     width: 80vw;
     display: grid;
@@ -617,6 +714,20 @@ h6 {
     display: inline-block;
     font-size: 0.8rem;
     margin-left: 0.5rem;
+}
+
+.sorry {
+    display: grid;
+    place-items: center;
+}
+
+.submit-button {
+    padding: 5px 15px;
+    border: none;
+    background-color: var(--primaryColor);
+    display: inline-block;
+    margin: 0 auto;
+    width: 50%;
 }
 
 @media screen and (min-width: 776px) {

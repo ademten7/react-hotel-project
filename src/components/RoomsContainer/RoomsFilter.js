@@ -173,8 +173,8 @@ const RoomsFilter = ({ rooms }) => {
           </div>
         </div>
         <div>
-          <button className="submit-button" type="submit">
-            Submit
+          <button className="btn-prima" type="submit">
+            Search
           </button>
         </div>
       </form>
