@@ -24,31 +24,24 @@ const RoomsFilter = ({ rooms }) => {
   console.log(sortedRooms);
 
   let tempRooms = [...rooms];
+  console.log(tempRooms);
   const getDataFromForm = (e) => {
     e.preventDefault();
     setType(formRef.current.type.value);
     setCapacity(formRef.current.capacity.value);
-    setPrice(formRef.current.price.value);
+    // setPrice(formRef.current.price.value);
 
-    if (type !== "all") {
-      tempRooms = rooms.filter(
-        (room) => room.type === formRef.current.type.value
-      );
+    if (type !== "select a room") {
+      tempRooms = rooms.filter((room) => room.type === type);
     }
     if (capacity !== 1) {
-      tempRooms = tempRooms.filter(
-        (room) => room.capacity >= formRef.current.capacity.value
-      );
+      tempRooms = tempRooms.filter((room) => room.capacity >= capacity);
     }
     if (price !== maxPrice) {
-      tempRooms = tempRooms.filter(
-        (room) => room.price <= formRef.current.price.value
-      );
+      tempRooms = tempRooms.filter((room) => room.price <= price);
     }
     tempRooms = tempRooms.filter(
-      (room) =>
-        room.size >= formRef.current.minSize.value &&
-        room.size <= formRef.current.maxSize.value
+      (room) => room.size >= minSize && room.size <= maxSize
     );
 
     if (formRef.current.breakfast.checked) {
@@ -99,8 +92,8 @@ const RoomsFilter = ({ rooms }) => {
         <div className="form-group">
           <label htmlFor="type">room type</label>
           <select name="type" id="type" className="form-control">
-            <option value="all" selected>
-              all
+            <option value="select a room" selected>
+              select a room
             </option>
             <option value="single">single</option>
             <option value="double">double</option>
@@ -132,6 +125,7 @@ const RoomsFilter = ({ rooms }) => {
         <div className="form-group">
           <label htmlFor="price">Room Price ${price}</label>
           <input
+            onChange={(e) => setPrice(e.target.value)}
             type="range"
             name="price"
             id="price"
@@ -162,7 +156,7 @@ const RoomsFilter = ({ rooms }) => {
           </div>
         </div>
         {/* check box for extras */}
-        <div className="form-group">
+        {/* <div className="form-group">
           <div className="single-extra">
             <input type="checkbox" name="breakfast" id="breakfast" />
             <label htmlFor="breakfast">breakfast</label>
@@ -171,7 +165,7 @@ const RoomsFilter = ({ rooms }) => {
             <input type="checkbox" name="pets" id="pets" />
             <label htmlFor="pets">pets</label>
           </div>
-        </div>
+        </div> */}
         <div>
           <button className="btn-prima" type="submit">
             Search

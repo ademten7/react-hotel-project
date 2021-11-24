@@ -7,7 +7,7 @@ const Container = (props) => {
   const [rooms, setRooms] = useState([]);
   const [sortedRooms, setSortedRooms] = useState([]);
   const [featuredRooms, setFeaturedRooms] = useState([]);
-  const [type, setType] = useState("all");
+  const [type, setType] = useState("select a room");
   const [capacity, setCapacity] = useState(1);
   const [price, setPrice] = useState(0);
   const [minPrice, setMinPrice] = useState(100);
