@@ -37,7 +37,14 @@ const SingleRoom = () => {
       <section className="single-room">
         <div className="single-room-images">
           {images.map((image, index) => {
-            return <img className="single-image" key={index} src={image} />;
+            return (
+              <img
+                className="single-image"
+                key={index}
+                src={image}
+                alt="single room"
+              />
+            );
           })}
         </div>
 

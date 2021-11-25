@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { MyContext } from "./context";
-import datas from "../data";
+import { array } from "../data";
 
 const Container = (props) => {
   const [user, setUser] = useState(null);
@@ -10,14 +10,14 @@ const Container = (props) => {
   const [type, setType] = useState("select a room");
   const [capacity, setCapacity] = useState(1);
   const [price, setPrice] = useState(0);
-  const [minPrice, setMinPrice] = useState(100);
+  const [minPrice] = useState(100);
   const [maxPrice, setMaxPrice] = useState(600);
-  const [minSize, setMinSize] = useState(0);
+  const [minSize] = useState(0);
   const [maxSize, setMaxSize] = useState(0);
-  const [breakfast, setBreakfast] = useState(false);
-  const [pets, setPets] = useState(false);
+  const [breakfast] = useState(false);
+  const [pets] = useState(false);
   useEffect(() => {
-    let rooms = formatData(datas);
+    let rooms = formatData(array);
     //console.log(rooms);
     let newFeaturedRooms = rooms.filter((room) => room.featured);
     // console.log(newFeaturedRooms);
@@ -31,8 +31,8 @@ const Container = (props) => {
     let maxSize = Math.max(...rooms.map((room) => room.size));
     setMaxSize(maxSize);
   }, []);
-  //to create a more organize array with 13 object(to put  id and images inside the fields object in data files)
-  //the data files is too complex.
+  //to create a more organize array with 13 object(to put  id and images inside the fields object in array files)
+  //the array files is too complex.
   const formatData = (items) => {
     //return a new array with 13 field object
     let tempItems = items.map((item) => {

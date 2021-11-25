@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useRef } from "react";
 import { MyContext } from "../../Context/context";
 import Title from "../Title";
 
@@ -15,8 +15,7 @@ const RoomsFilter = ({ rooms }) => {
     maxPrice,
     minSize,
     maxSize,
-    breakfast,
-    pets,
+
     sortedRooms,
     setSortedRooms,
   } = useContext(MyContext);
@@ -112,7 +111,7 @@ const RoomsFilter = ({ rooms }) => {
         <div className="form-group">
           <label htmlFor="capacity">Guests</label>
           <select name="capacity" id="capacity" className="form-control">
-            <option selected value="1" selected>
+            <option selected value="1">
               1
             </option>
             <option value="2">2</option>
