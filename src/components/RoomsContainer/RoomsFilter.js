@@ -43,12 +43,12 @@ const RoomsFilter = ({ rooms }) => {
       (room) => room.size >= minSize && room.size <= maxSize
     );
 
-    if (formRef.current.breakfast.checked) {
-      tempRooms = tempRooms.filter((room) => room.breakfast === true);
-    }
-    if (formRef.current.pets.checked) {
-      tempRooms = tempRooms.filter((room) => room.pets === true);
-    }
+    // if (formRef.current.breakfast.checked) {
+    //   tempRooms = tempRooms.filter((room) => room.breakfast === true);
+    // }
+    // if (formRef.current.pets.checked) {
+    //   tempRooms = tempRooms.filter((room) => room.pets === true);
+    // }
 
     setSortedRooms(tempRooms);
     console.log(sortedRooms);
