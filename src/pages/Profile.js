@@ -34,10 +34,18 @@ const Profile = () => {
           </div>
         </div>
       )}
-
-      <button className="btn-prima" onClick={logOutGoogle}>
+      <button
+        className="btn-prima"
+        onClick={() => {
+          localStorage.clear();
+          setUser(null);
+        }}
+      >
         Logout
       </button>
+      {/* <button className="btn-prima" onClick={logOutGoogle}>
+        Logout
+      </button> */}
     </div>
   );
 };

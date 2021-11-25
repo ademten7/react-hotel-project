@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import {
@@ -35,11 +35,19 @@ const Login = () => {
         //{replace:true} change the previous path
         navigate("/profile");
         //navigate(-2)go two step back
-
+        localStorage.setItem("data-user", JSON.stringify(userInfo.user));
         console.log(userInfo);
       })
       .catch((err) => console.log(err.message));
   };
+
+  useEffect(() => {
+    let localUSer = localStorage.getItem("data-user");
+    if (localUSer) {
+      let originalLocalUser = JSON.parse(localUSer);
+      setUser(originalLocalUser);
+    }
+  }, []);
   return (
     <div className="login-page">
       <h1>Login Page</h1>

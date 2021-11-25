@@ -84,7 +84,7 @@ const Navbar = () => {
                 }
                 to="/profile"
               >
-                Profile
+                {user.displayName}
               </NavLink>
             </li>
           ) : (
