@@ -47,7 +47,7 @@ const Login = () => {
       let originalLocalUser = JSON.parse(localUSer);
       setUser(originalLocalUser);
     }
-  }, []);
+  });
   return (
     <div className="login-page">
       <h1>Login Page</h1>
