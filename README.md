@@ -1,5 +1,5 @@
 # React Hotel Project
-
+react-resort-hotel.web.app
 - installed packages
 
 * npm i react-icons
